@@ -27,14 +27,13 @@ module.exports = function (sequelize, DataTypes) {
     }
   );
 
-  // Reviewer.associate = function(models) {
-  //   Reviewer.belongsToMany(models.Article, {
-  //     // through: ArticleReviewer,
-  //     through: "ArticleReviewer",
-  //     onDelete: "CASCADE",
-  //     foreignKey: "reviewerId"
-  //   })
-  // };
+  Reviewer.associate = function(models) {
+    Reviewer.belongsToMany(models.Article, {
+      // through: ArticleReviewer,
+      through: "articleReviewer",
+      onDelete: "CASCADE"
+    })
+  };
 
 
   return Reviewer;

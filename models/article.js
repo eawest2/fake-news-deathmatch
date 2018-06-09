@@ -1,7 +1,7 @@
 
 
 module.exports = function(sequelize, DataTypes) {
-  var Article = sequelize.define("article", {
+  var Article = sequelize.define("Article", {
     URL: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
       validate: {
         notEmpty: true
@@ -29,19 +29,27 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         notEmpty: true
       }
+    },
+    author: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     }
+
 
   });
 
  
-  // Article.associate = function(models) {
-  //   Article.belongsToMany(models.Reviewer, {
-  //     // through: models.ArticleReviewer,
-  //     through: "ArticleReviewer",
-  //     onDelete: "CASCADE",
-  //     foreignKey: "articleId"
-  //   })
-  // };
+  Article.associate = function(models) {
+    Article.belongsToMany(models.Reviewer, {
+      // through: models.ArticleReviewer,
+      through: "articleReviewer",
+      onDelete: "CASCADE"
+      // foreignKey: "articleId"
+    })
+  };
   
   
   return Article;

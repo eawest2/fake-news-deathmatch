@@ -1,18 +1,56 @@
-// Dependencies
-// =============================================================
 
-// This may be confusing but here Sequelize (capital) references the standard library
-var Sequelize = require("sequelize");
-// Dependancies
-var sequelize = require("../config/connection.js");
 
-// Article model
-var Article = sequelize.define("article", {
-    //Insert DB text here
-});
+module.exports = function(sequelize, DataTypes) {
+  var Article = sequelize.define("Article", {
+    URL: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    },
+    imageURL: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    },
+    sourceId: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    },
+    author: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    }
 
-// Sync
-Article.sync();
 
-// Export
-module.exports = Article;
+  });
+
+ 
+  Article.associate = function(models) {
+    Article.belongsToMany(models.Reviewer, {
+      // through: models.ArticleReviewer,
+      through: "articleReviewer",
+      onDelete: "CASCADE"
+      // foreignKey: "articleId"
+    })
+  };
+  
+  
+  return Article;
+};

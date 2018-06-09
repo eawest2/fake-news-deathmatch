@@ -1,8 +1,8 @@
+
 var express = require("express");
 var bodyParser = require("body-parser");
 var db = require("./models");
 var exphbs = require("express-handlebars");
-var routes = require("./controllers/newsReview_controller.js");
 
 var PORT = process.env.PORT || 8080;
 
@@ -24,8 +24,11 @@ app.engine("handlebars", exphbs({
 }));
 app.set("view engine", "handlebars");
 
-app.use(routes);
 app.use(express.static(__dirname + '/public'));
+
+// Routes
+require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
 // Start our server so that it can begin listening to client requests.
 // app.listen(PORT, function() {

@@ -1,0 +1,28 @@
+html, body {
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    background-color: bisque;
+
+}
+.header{
+    height:290px;
+    line-height: 100px;
+}
+
+#logo-container {
+    font-size: 80px;
+    width: 200px;
+    text-shadow: 2px 2px #00000099;
+    
+}
+.description {
+    
+    font-size: 30px;
+}
+
+.container{
+    height:100px;
+    padding: 0px;
+    margin: 0px;
+}

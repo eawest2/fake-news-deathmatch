@@ -20,6 +20,16 @@ module.exports = function (sequelize, DataTypes) {
         }
       }
     },
+    title: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "Title is required"
+        }
+      }
+    },
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -42,7 +52,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     author: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
         notEmpty: {
           args: true,

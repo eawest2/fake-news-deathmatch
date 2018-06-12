@@ -2,49 +2,45 @@ var db = require("./models");
 
 let reviewers = [{
         email: "reviewer_1@gmail.com",
-        gender: "F"
+        firstname: "Reviewer",
+        lastname: "One",
+        gender: "F",
+        password: "$2a$08$8Ytl.bdioWB.RzYbx9TbJuxBfHTRq6hFyqMtjTXC3gPNuDU4cpTH2",
+        status: "active"
     },
     {
         email: "reviewer_2@gmail.com",
-        gender: "F"
+        firstname: "Reviewer",
+        lastname: "Two",
+        gender: "M",
+        password: "$2a$08$g.nkogP8PlSWn.NhNJzFvu5W7Ik.uhAP/6QY2D6FNMmhB3T1EnKey",
+        status: "active"
     },
-    {
-        email: "reviewer_3@gmail.com",
-        gender: "M"
-    },
-    {
-        email: "reviewer_4@gmail.com",
-        gender: "M"
-    }
 ];
 
 let articles = [{
-        URL: "http://aaaaa.aa",
-        imageURL: "http://bbb.bbbb",
-        description: "this is a test1",
-        sourceId: "CNN",
-        author: "Rob"
+        URL: "https://www.nytimes.com/2018/06/12/business/dealbook/att-time-warner-trial-antitrust-ruling.html",
+        imageURL: "https://static01.nyt.com/images/2018/06/13/business/13ATT-vid-still/13ATT-vid-still-facebookJumbo.jpg",
+        title: "Why the AT&T-Time Warner Case Was So Closely Watched",
+        description: "The win for AT&T could affect corporate America’s takeover ambitions and the Justice Department’s interpretation of antitrust rules.",
+        sourceId: "the-new-york-times",
+        author: "Cecilia Kang"
     },
     {
-        URL: "http://cccc.dddd.eeee",
-        imageURL: "http://fff.ggg.hhhh",
-        description: "this is a test2",
-        sourceId: "ABC",
-        author: "Kevin"
-    },
-    {
-        URL: "http://ii.jjj.kkkk",
-        imageURL: "http://ll.mm.nnn",
+        URL: "http://video.foxnews.com/v/5796780306001/",
+        imageURL: "http://a57.foxnews.com/media2.foxnews.com/BrightCove/694940094001/2018/06/12/640/360/694940094001_5796785400001_5796780306001-vs.jpg",
+        title: "Federal judge allows AT&T-Time Warner deal",
         description: "this is a test3",
         sourceId: "FOX",
-        author: "Eric"
+        author: "Fox News"
     },
     {
-        URL: "http://ooo.pppppp",
-        imageURL: "http://qqqqqq.qqqq",
-        description: "this is a test4",
-        sourceId: "FOX",
-        author: "Jyo"
+        URL: "http://us.cnn.com/videos/cnnmoney/2018/06/12/att-time-warner-merger-toobin-trump-suspicions-lead.cnn",
+        imageURL: "https://cdn.cnn.com/cnnnext/dam/assets/180612171953-att-time-warner-merger-toobin-trump-suspicions-lead-00000000-super-tease.jpg",
+        title: "Toobin: Suspicions about Trump DOJ's motives - CNN Video",
+        description: "CNN's Jeffrey Toobin breaks down the AT&T and Time Warner merger and explains why there are suspicions about the Trump administration's motives.",
+        sourceId: "cnn",
+        author: null
     },
 
 ]
@@ -77,58 +73,3 @@ db.ArticleReviewer.destroy({
     .catch((err) => {
         console.log(err);
     });
-
-/*
-        articles.forEach(article => {
-
-            db.Article.create(article)
-                // .then(function (dbArticle) {
-                //     console.log(dbArticle);
-                // })
-                .catch(err => {
-                    console.log(`Check log for errors ${err}`)
-                })
-        });
-
-        reviewers.forEach(reviewer => {
-            db.Reviewer.create(reviewer)
-                // .then(function (dbReviewer) {
-                //     console.log(dbReviewer);
-                // });
-                .catch(err => {
-                    console.log(`Check log for errors`)
-                })
-        })
-
-        // reviewers.forEach(reviewer => {
-        //     articles.forEach(article => {
-        //         db.Reviewer.addArticle(article, {
-        //             through: {
-        //                 rating1: '2',
-        //                 rating2: "3",
-        //                 rating3: "4",
-        //                 comment: "great article"
-        //             }
-        //         });
-        //     });
-        // });
-
-
-
-        db.Reviewer.findAll()
-        .then(reviewer => {
-            db.Article.findAll()
-                .then(article => {
-                    console.log(article[0].dataValues);
-                    console.log(reviewer[0].dataValues);
-                    article[0].addReviewer(reviewer[0], {
-                        through: {
-                            rating1: '2',
-                            rating2: "3",
-                            rating3: "4",
-                            comment: "great article"
-                        }
-                    })
-                })
-        })
-*/

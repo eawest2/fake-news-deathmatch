@@ -48,45 +48,32 @@ let articles = [{
     },
 
 ]
-Promise.all(db.ArticleReviewer.destroy({
+db.ArticleReviewer.destroy({
         where: {}
-    }))
-    .then(response => db.ArticleReviewer.destroy({
+    })
+    .then(() => db.Article.destroy({
             where: {}
         })
-        .then(response => db.Reviewer.destroy({
-            where: {}
-        })));
-// db.ArticleReviewer.destroy({
-//     where: {}
-//     // force: true
-// });
-
-// db.Article.destroy({
-//     where: {}
-//     // force: true
-// });
-
-// db.Reviewer.destroy({
-//     where: {}
-//     // force: true
-// });
-
-Promise.all(articles.map(article => db.Article.create(article)))
-    .then(articlesDB => Promise.all(reviewers.map(reviewer => db.Reviewer.create(reviewer)))
-        .then(reviewersDB => {
-            console.log(articlesDB[0].dataValues);
-            console.log(reviewersDB[0].dataValues);
-            return articlesDB[0].addReviewer(reviewersDB[0], {
-                through: {
-                    rating1: '2',
-                    rating2: "3",
-                    rating3: "4",
-                    comment: "great article"
-                }
+        .then(() => db.Reviewer.destroy({
+                where: {}
             })
+            .then(
+                Promise.all(articles.map(article => db.Article.create(article)))
+                .then(articlesDB => Promise.all(reviewers.map(reviewer => db.Reviewer.create(reviewer)))
+                    .then(reviewersDB => {
+                        console.log(articlesDB[0].dataValues);
+                        console.log(reviewersDB[0].dataValues);
+                        return articlesDB[0].addReviewer(reviewersDB[0], {
+                            through: {
+                                rating1: '2',
+                                rating2: "3",
+                                rating3: "4",
+                                comment: "great article"
+                            }
+                        })
 
-        }))
+                    }))
+            )))
     .catch((err) => {
         console.log(err);
     });

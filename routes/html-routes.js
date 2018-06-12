@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var UserModel = require('../models/index.js');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -89,3 +90,6 @@ module.exports = function(app){
 	});
 
 };
+=======
+module.exports = function(app) {};
+>>>>>>> c3c8e8e381d97663404c4496545e3a7796be14dd

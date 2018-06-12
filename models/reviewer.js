@@ -1,37 +1,41 @@
 module.exports = function (sequelize, DataTypes) {
   var Reviewer = sequelize.define("Reviewer", {
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          isEmail: true
-        },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
 
-      },
-      gender: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          isIn: [
-            ['F', 'M']
-          ],
-        }
+        isEmail: {
+          args: true,
+          msg: "Invalid Email"
+        },
       }
     },
-
-    {
-      indexes: [{
-        unique: true,
-        fields: ["email"]
-      }]
+    gender: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isIn: {
+          args: [
+            ["F", "M"]
+          ],
+          msg: "Invalid gender"
+        },
+      }
     }
-  );
+  }, {
+    indexes: [{
+      unique: true,
+      fields: ["email"]
+    }]
+  });
 
-  Reviewer.associate = function(models) {
+  Reviewer.associate = function (models) {
     Reviewer.belongsToMany(models.Article, {
       // through: ArticleReviewer,
-      through: "articleReviewer",
-      onDelete: "CASCADE"
+      through: "ArticleReviewer",
+      onDelete: "CASCADE",
+      foreignKey: "reviewerId"
     })
   };
 

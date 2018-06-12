@@ -4,7 +4,7 @@ const Sequelize = require("sequelize");
 Op = Sequelize.Op;
 
 module.exports = function (sequelize, DataTypes) {
-  var ArticleReviewer = sequelize.define("articleReviewer", {
+  var ArticleReviewer = sequelize.define("ArticleReviewer", {
     rating1: {
       type: DataTypes.INTEGER,
       allowNull: false,

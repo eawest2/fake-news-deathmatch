@@ -16,9 +16,6 @@ module.exports = function(app) {
 
     // Autopull new data from API sources, format, and then write to database. 
     app.post("/api/pull", function() {
-            var cnnArticles = [];
-            var foxArticles = [];
-            var nytArticles = [];
             var sources = ["https://newsapi.org/v2/everything?domains=cnn.com&language=en&pagesize=100&sortBy=popularity&apiKey=71df48734adf49a9a56c2e893c8408f1", "https://newsapi.org/v2/everything?domains=foxnews.com&language=en&pagesize=100&sortBy=popularity&apiKey=71df48734adf49a9a56c2e893c8408f1", 'https://newsapi.org/v2/everything?domains=nytimes.com&language=en&pagesize=100&sortBy=popularity&apiKey=71df48734adf49a9a56c2e893c8408f1']
             Promise.all(sources.map(source=>$.ajax({
                 url: source,
@@ -51,56 +48,6 @@ module.exports = function(app) {
                 .catch(err=>err)
             })
             .catch(err=>console.log(err))
-            
-            // var completed = [];
-
-            // function check() {
-            //     if (completed[0] && completed [1] && completed[2]){
-            //         writeApiToDB();
-            //         completed = [];
-            //     }
-            // };
-
-            // function writeApiToDB(){
-
-
-            // };
-
-            // //CNN News pull
-            // $.ajax({
-            //     url: sources[0],
-            //     method: "GET"
-            // })
-            // // Stores all of the retrieved data inside of an object called "response"
-            // .then(function(response) {
-            //             cnnArticles = response.articles;
-            //             completed.push(true);
-            //             check();
-            //     });
-
-            // //Fox News pull
-            // $.ajax({
-            //     url: sources[1],
-            //     method: "GET"
-            // })
-            // // Stores all of the retrieved data inside of an object called "response"
-            // .then(function(response) {
-            //             foxArticles = response.articles;
-            //             completed.push(true);
-            //             check();
-            //     });
-
-            // //NYT News pull
-            // $.ajax({
-            //     url: sources[2],
-            //     method: "GET"
-            // })
-            // // Stores all of the retrieved data inside of an object called "response"
-            // .then(function(response) {
-            //             nytArticles = response.articles;
-            //             completed.push(true);
-            //             check();
-            //     });
 
     });
 
@@ -108,21 +55,42 @@ module.exports = function(app) {
 
     app.get("/api/article/:id", function(req, res) {
 
-
+        db.Article.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+            .then(function(abArticle){
+                res.json(dbAticle);
+            });
     });
 
 
     // Update article
 
-    app.put("/api/article/:id/write", function(req, res) {
-
+    app.put("/api/article/:id/", function(req, res) {
+        db.Article.update(req.body,
+            {
+            where: {
+                id: req.body.id
+            }
+            })
+            .then(function(dbArticle) {
+                res.json(dbArticle);
+            });
     });
 
     // Find articles by user
 
-    pp.get("/api/user/:id", function(req, res) {
-
-
+    app.get("/api/user/:id", function(req, res) {
+        db.Reviewer.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+            .then(function(abArticle){
+                res.json(dbAticle);
+            });
     });
 
 

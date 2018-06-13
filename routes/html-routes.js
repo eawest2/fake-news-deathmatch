@@ -1,5 +1,9 @@
 
 var UserModel = require('../models/index.js');
+var path = require("path");
+var express = require("express")
+var router = express.Router();
+
 // var passport = require('passport');
 // var LocalStrategy = require('passport-local').Strategy;
 // //var orm = require('../db/orm.js');
@@ -36,14 +40,18 @@ module.exports = function(app){
 
 	//GETs
 
-	app.get('/', function(req, res){
-		res.render('index', {
-			welcomeText: "Sign In",
-			actionBtn: 'signin',
-			message: req.flash('error')[0],
-			otherAction: "Signup"
-		});
+	app.get("/", function(req, res) {
+		res.render('dashboard');
 	});
+
+	// app.get('/', function(req, res){
+	// 	res.render('index', {
+	// 		welcomeText: "Sign In",
+	// 		actionBtn: 'signin',
+	// 		message: req.flash('error')[0],
+	// 		otherAction: "Signup"
+	// 	});
+	// });
 
 	// app.get('/signin', function(req, res){
 	// 	res.redirect('/')
@@ -91,5 +99,4 @@ module.exports = function(app){
 
 };
 
-module.exports = function(app) {};
 

@@ -72,6 +72,5 @@ module.exports = function (sequelize, DataTypes) {
     })
   };
 
-
   return Article;
 };

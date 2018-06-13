@@ -42,8 +42,8 @@ let articles = [{
         sourceId: "cnn",
         author: null
     },
-
 ]
+
 db.ArticleReviewer.destroy({
         where: {}
     })

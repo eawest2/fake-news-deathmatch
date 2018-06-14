@@ -4,16 +4,6 @@ var Article = require("../models/article.js");
 
 // Routes
 module.exports = function(app) {
-
-    // Get all articles for front page (modify with sequelize to use only articles less than 30 days old);
-    app.get("/api/all", function(req, res) {
-
-    Article.findAll({}).then(function(results) {
-        res.json(results);
-    });
-
-    });
-
     // Autopull new data from API sources, format, and then write to database. 
     app.post("/api/pull", function() {
             var sources = ["https://newsapi.org/v2/everything?domains=cnn.com&language=en&pagesize=100&sortBy=popularity&apiKey=71df48734adf49a9a56c2e893c8408f1", "https://newsapi.org/v2/everything?domains=foxnews.com&language=en&pagesize=100&sortBy=popularity&apiKey=71df48734adf49a9a56c2e893c8408f1", 'https://newsapi.org/v2/everything?domains=nytimes.com&language=en&pagesize=100&sortBy=popularity&apiKey=71df48734adf49a9a56c2e893c8408f1']
@@ -52,9 +42,7 @@ module.exports = function(app) {
     });
 
     // Get specific article from database
-
     app.get("/api/article/:id", function(req, res) {
-
         db.Article.findOne({
             where: {
                 id: req.params.id
@@ -67,7 +55,6 @@ module.exports = function(app) {
 
 
     // Update article
-
     app.put("/api/article/:id/", function(req, res) {
         db.Article.update(req.body,
             {
@@ -80,31 +67,17 @@ module.exports = function(app) {
             });
     });
 
-    // Find articles by user
-
-    app.get("/api/user/:id", function(req, res) {
-        db.Reviewer.findOne({
-            where: {
-                id: req.params.id
+// find 3 random articles from DB
+    app.get("/api/article/review", function(req, res) {
+        //find last article ID in DB. lastArt
+        var ranArt=[];
+        db.article.findAll({})
+        .then(articles=>{
+            var len = articles.length;
+            for(let i = 3; i<3;i++){
+                ranArt.push(articles[Math.floor(Math.random()*len)]);
             }
-        })
-            .then(function(abArticle){
-                res.json(dbAticle);
-            });
+            res.json(ranArt);
+        });
     });
-
-    //Find random 3 random articles per source
-
-    // app.get("/api/article/review", function(req, res) {
-    //     db.Article.findOne(req.body,
-    //         {
-    //         where: {
-    //             id: 
-    //         }
-    //         })
-    //         .then(function(dbArticle) {
-    //             res.json(dbArticle);
-    //         });
-    // });
-
 };

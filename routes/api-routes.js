@@ -55,18 +55,22 @@ module.exports = function(app) {
     });
 
 
-    // Update article
+    // Add review to article
     app.put("/api/article/:id/", function(req, res) {
-        db.Article.update(req.body,
-            {
-            where: {
-                id: req.body.id,
-                include:[db.Review]
-            }
+        db.Review.create({
+            rating1:'',
+            rating2:'',
+            rating3:'',
+            comment:''
+        }).then(review=>{
+            db.Article.findOne({
+                'where':{
+                    'id':req.params.id
+                }
+            }).then(article=>{
+                article.setArticleReviews(review);
             })
-            .then(function(dbArticle) {
-                res.json(dbArticle);
-            });
+        })
     });
 
 // find 3 random articles from DB

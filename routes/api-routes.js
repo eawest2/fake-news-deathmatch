@@ -45,7 +45,8 @@ module.exports = function(app) {
     app.get("/api/article/:id", function(req, res) {
         db.Article.findOne({
             where: {
-                id: req.params.id
+                id: req.params.id,
+                include:[db.Review]
             }
         })
             .then(function(abArticle){
@@ -59,7 +60,8 @@ module.exports = function(app) {
         db.Article.update(req.body,
             {
             where: {
-                id: req.body.id
+                id: req.body.id,
+                include:[db.Review]
             }
             })
             .then(function(dbArticle) {

@@ -1,4 +1,5 @@
 // Dependencies
+var db = require("../models");
 var Article = require("../models/article.js");
 
 
@@ -7,7 +8,7 @@ module.exports = function(app) {
     // Autopull new data from API sources, format, and then write to database. 
     app.post("/api/pull", function() {
             var sources = ["https://newsapi.org/v2/everything?domains=cnn.com&language=en&pagesize=100&sortBy=popularity&apiKey=71df48734adf49a9a56c2e893c8408f1", "https://newsapi.org/v2/everything?domains=foxnews.com&language=en&pagesize=100&sortBy=popularity&apiKey=71df48734adf49a9a56c2e893c8408f1", 'https://newsapi.org/v2/everything?domains=nytimes.com&language=en&pagesize=100&sortBy=popularity&apiKey=71df48734adf49a9a56c2e893c8408f1']
-            Promise.all(sources.map(source=>$.ajax({
+            Promise.all(sources.map(source=> $.ajax({
                 url: source,
                 method: "GET"
             })))
@@ -41,20 +42,6 @@ module.exports = function(app) {
 
     });
 
-    // Get specific article from database
-    app.get("/api/article/:id", function(req, res) {
-        db.Article.findOne({
-            where: {
-                id: req.params.id,
-                include:[db.Review]
-            }
-        })
-            .then(function(abArticle){
-                res.json(dbAticle);
-            });
-    });
-
-
     // Add review to article
     app.put("/api/article/:id/", function(req, res) {
         db.Review.create({
@@ -73,16 +60,19 @@ module.exports = function(app) {
         })
     });
 
-// find 3 random articles from DB
+    //find 3 random articles from DB
     app.get("/api/article/review", function(req, res) {
         //find last article ID in DB. lastArt
         var ranArt=[];
-        db.article.findAll({})
+        db.Article.findAll({})
         .then(articles=>{
             var len = articles.length;
-            for(let i = 3; i<3;i++){
-                ranArt.push(articles[Math.floor(Math.random()*len)]);
+            console.log(articles.length);
+            for (let i = 0; i<3; i++){
+                var rando = Math.floor(Math.random()*len)
+                ranArt.push(articles[rando].dataValues);
             }
+            console.log(ranArt);
             res.json(ranArt);
         });
     });

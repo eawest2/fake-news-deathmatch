@@ -62,15 +62,21 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-
   Article.associate = function (models) {
-    Article.belongsToMany(models.Reviewer, {
-      // through: models.ArticleReviewer,
-      through: "ArticleReviewer",
-      onDelete: "CASCADE",
-      foreignKey: "articleId"
-    })
-  };
+    Article.hasMany(models.Review, {
+      as: 'ArticleReviews',
+      onDelete: "CASCADE"
+    });
+   };
+
+  // Article.associate = function (models) {
+  //   Article.belongsToMany(models.Reviewer, {
+  //     // through: models.ArticleReviewer,
+  //     through: "ArticleReviewer",
+  //     onDelete: "CASCADE",
+  //     foreignKey: "articleId"
+  //   })
+  // };
 
   return Article;
 };

@@ -41,7 +41,7 @@ module.exports = function(app){
 	//GETs
 
 	app.get("/", function(req, res) {
-		res.render('dashboard');
+		res.render('news');
 	});
 
 	// app.get('/', function(req, res){

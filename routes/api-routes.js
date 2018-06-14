@@ -93,4 +93,18 @@ module.exports = function(app) {
             });
     });
 
+    //Find random 3 random articles per source
+
+    // app.get("/api/article/review", function(req, res) {
+    //     db.Article.findOne(req.body,
+    //         {
+    //         where: {
+    //             id: 
+    //         }
+    //         })
+    //         .then(function(dbArticle) {
+    //             res.json(dbArticle);
+    //         });
+    // });
+
 };

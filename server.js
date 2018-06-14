@@ -32,23 +32,25 @@ app.engine("handlebars", exphbs({
 }));
 app.set("view engine", "handlebars");
 
-app.use(express.static(__dirname + '/public'));
 
 // Routes
 require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);
 var authRoute = require("./routes/auth.js")(app,passport);
 
-// Start our server so that it can begin listening to client requests.
-// app.listen(PORT, function() {
-//    console.log("Server listening on: http://localhost:" + PORT);
-// });
+app.use(express.static(__dirname + '/public'));
 
-db.sequelize.sync({
-        force: true
-    })
-    .then(function () {
-        app.listen(PORT, function () {
-            console.log("Server listening on: http://localhost:" + PORT);
-        });
-    });
+
+//Start our server so that it can begin listening to client requests.
+app.listen(PORT, function() {
+    console.log("Server listening on: http://localhost:" + PORT);
+});
+
+// db.sequelize.sync({
+//         force: true
+//     })
+//     .then(function () {
+//         app.listen(PORT, function () {
+//             console.log("Server listening on: http://localhost:" + PORT);
+//         });
+//     });

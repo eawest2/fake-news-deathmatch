@@ -1,22 +1,74 @@
 var db = require("./models");
 
-let reviewers = [{
-        email: "reviewer_1@gmail.com",
-        firstname: "Reviewer",
-        lastname: "One",
-        gender: "F",
-        password: "$2a$08$8Ytl.bdioWB.RzYbx9TbJuxBfHTRq6hFyqMtjTXC3gPNuDU4cpTH2",
-        status: "active"
+// let reviewers = [{
+//         email: "reviewer_1@gmail.com",
+//         firstname: "Reviewer",
+//         lastname: "One",
+//         gender: "F",
+//         password: "$2a$08$8Ytl.bdioWB.RzYbx9TbJuxBfHTRq6hFyqMtjTXC3gPNuDU4cpTH2",
+//         status: "active"
+//     },
+//     {
+//         email: "reviewer_2@gmail.com",
+//         firstname: "Reviewer",
+//         lastname: "Two",
+//         gender: "M",
+//         password: "$2a$08$g.nkogP8PlSWn.NhNJzFvu5W7Ik.uhAP/6QY2D6FNMmhB3T1EnKey",
+//         status: "active"
+//     },
+// ];
+
+
+let reviews = [{
+        rating1: '5',
+        rating2: "5",
+        rating3: "5",
+        comment: "great article"
     },
     {
-        email: "reviewer_2@gmail.com",
-        firstname: "Reviewer",
-        lastname: "Two",
-        gender: "M",
-        password: "$2a$08$g.nkogP8PlSWn.NhNJzFvu5W7Ik.uhAP/6QY2D6FNMmhB3T1EnKey",
-        status: "active"
+        rating1: '2',
+        rating2: "1",
+        rating3: "1",
+        comment: "I can't believe they actually paid someone to write this trash"
+    },
+    {
+        rating1: '3',
+        rating2: "3",
+        rating3: "3",
+        comment: "Ok article. Nothing great."
+    },
+    {
+        rating1: "4",
+        rating2: "3",
+        rating3: "2",
+        comment: "Odsljk lk lkjdsf lkjk."
+    },
+    {
+        rating1: '5',
+        rating2: "1",
+        rating3: "2",
+        comment: "lsdfjk ldskj. I sdlfkjlkj lkljkf ljkdslfkj. Kjhkhdsf lksdhflhjksdlkj."
+    },
+    {
+        rating1: '4',
+        rating2: "3",
+        rating3: "1",
+        comment: "lkjdsflkj/ lkjdsflkj kljkkj. alkjhsdlkfj sldkflkj fewlkhfweuo ewhh sdlkhflkhj"
+    },
+    {
+        rating1: '4',
+        rating2: "1",
+        rating3: "5",
+        comment: "dsflkjlkj sdlfj;ljk ljljk ljhkldsiooeiyhds"
+    },
+    {
+        rating1: '2',
+        rating2: "3",
+        rating3: "2",
+        comment: "vmcxbdsjhg ruyt fsd xcvbm rteyu vcmbn"
     },
 ];
+
 
 let articles = [{
         URL: "https://www.nytimes.com/2018/06/12/business/dealbook/att-time-warner-trial-antitrust-ruling.html",
@@ -44,32 +96,30 @@ let articles = [{
     },
 ]
 
-db.ArticleReviewer.destroy({
+db.Article.destroy({
         where: {}
     })
-    .then(() => db.Article.destroy({
+    .then(() => db.Review.destroy({
             where: {}
         })
-        .then(() => db.Reviewer.destroy({
-                where: {}
-            })
-            .then(
-                Promise.all(articles.map(article => db.Article.create(article)))
-                .then(articlesDB => Promise.all(reviewers.map(reviewer => db.Reviewer.create(reviewer)))
-                    .then(reviewersDB => {
-                        console.log(articlesDB[0].dataValues);
-                        console.log(reviewersDB[0].dataValues);
-                        return articlesDB[0].addReviewer(reviewersDB[0], {
-                            through: {
-                                rating1: '2',
-                                rating2: "3",
-                                rating3: "4",
-                                comment: "great article"
-                            }
-                        })
-
-                    }))
-            )))
-    .catch((err) => {
-        console.log(err);
-    });
+        .then(
+            Promise.all(articles.map(article => db.Article.create(article)))
+            .then(articlesDB => Promise.all(reviews.map(review => db.Review.create(review)))
+                .then(reviewDB => {
+                    // console.log(articlesDB[0].dataValues);
+                    // console.log(reviewDB[0].dataValues);
+                    return ( 
+                        articlesDB[0].setArticleReviews(reviewDB[0], {}),
+                        articlesDB[1].setArticleReviews(reviewDB[1], {}),
+                        articlesDB[2].setArticleReviews(reviewDB[2], {}),
+                        articlesDB[0].setArticleReviews(reviewDB[3], {}),
+                        articlesDB[1].setArticleReviews(reviewDB[4], {}),
+                        articlesDB[1].setArticleReviews(reviewDB[5], {}),
+                        articlesDB[1].setArticleReviews(reviewDB[6], {}),
+                        articlesDB[0].setArticleReviews(reviewDB[7], {})
+                    );
+                }))
+        ))
+.catch((err) => {
+    console.log(err);
+});

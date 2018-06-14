@@ -1,6 +1,6 @@
 {
   "development": {
-    "username": "test",
+    "username": "testuser",
     "password": null,
     "database": "newsReview_db",
     "host": "127.0.0.1",

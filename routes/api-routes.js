@@ -1,6 +1,8 @@
 // Dependencies
 var db = require("../models");
 var Article = require("../models/article.js");
+var Review = require("../models/review.js");
+var $ = require("jquery");
 
 
 // Routes
@@ -76,4 +78,19 @@ module.exports = function(app) {
             res.json(ranArt);
         });
     });
+
+    //aggregate reviews of individual sources
+
+    app.get("api/jumbo", function (req, res){
+
+        db.Review.findAll9({
+            where: {
+
+            }
+        })       
+
+    });
+
+
 };
+

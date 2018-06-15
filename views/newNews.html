@@ -1,263 +1,243 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <title>Fake News Death MATCH</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://unpkg.com/ionicons@4.2.0/dist/css/ionicons.min.css" rel="stylesheet">
+</head>
 <style>
+     * {
+    box-sizing: border-box;
+}
+
 body {
-    background-color: rgba(0, 119, 255, 0.733);
-    
-}
-div.container {
-    width: 100%;
-    border: 4px solid gray;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-header{
-    padding: 1em;
-    color: white;
+/* Style the header */
+header {
     background-color: black;
-    clear: left;
+    padding: 30px;
     text-align: center;
-    font-size: 29px;
-}
-footer {
-    padding: 1em;
-    color: white;
-    background-color: black;
-    clear: left;
-    text-align: center;
+    font-size: 55px;
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Create two columns/boxes that floats next to each other */
 nav {
     float: left;
-    width: 80px;
-    padding: 1em;
-    
+    width: 15%;
+    height: 250px; /* only for demonstration, should be removed */
+    background:  white;
+    padding: 20px;
 }
-h1 {
-    color:rgba(190, 5, 21, 0.719);
-    font-size: 47pt;
-}
-h2 {
-    margin-left: auto;
-    margin-right: auto;
-    align-self: auto;
-    text-align: center;
-    font-size: 18pt
-}
-h4 {
-    color: white;
-}
-h3 {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    font-size: 33pt;
 
-}
-a {
-    color: orange;
-    font-size: 13pt;
-}
+/* Style the list inside the menu */
 nav ul {
     list-style-type: none;
     padding: 0;
 }
+
+li{
+  margin: 30px 0;
+}
+
+h1{
+  margin: 15px 0;
+}
+
+/* Style the table */
+table, th, td {
+    border: 3px solid black;
+    border-collapse: collapse;
+    margin-bottom: 4px;
+    width: 50%;
    
-nav ul a {
-    text-decoration: none;
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    border: 5px solid black;
 }
 
 article {
-    border-left: 1px solid gray;
-    padding: 1em;
-    overflow: hidden;
+    float: left;
+    padding: 20px;
+    width: 85%;
+    background-color: #f1f1f1;
+    height: 300px; /* only for demonstration, should be removed */
 }
-.btn {
-    background-color: orange;
-    border: none;
-    color: white;
-    padding: 5px 18px;
-    font-size: 16px;
-    cursor: pointer;
-   
-}
-table {
-    border-collapse: collapse;
-    border: 1px solid black;
-} 
 
-th,td {
-    border: 3px solid black;
+/* Clear floats after the columns */
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.rating label
+{
+    content: '\f005' ;
+    font-family: fontAwesome;
+}
+
+/* Style the footer */
+footer {
+    background-color: black;
+    padding: 10px;
     text-align: center;
-    font-size: 20px;
-    
+    color: red;
 }
 
-table.c {
-    table-layout: fixed;
-    width: 50%; 
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    
-}
-h4 {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-p {
-    text-align: center;
-    margin-right: auto;
-    margin-left: auto;
-    color: white;
-    font-size: 25px;
-}
-btn {
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5px 18px;
-}
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-   
-}
-
-
-
-
-</style>
-</head>
-<body>
-        <div class="navbar">
-                <button class="btn"><i class="fa fa-bars"></i> Login</button>
-                
-              </div>
-              
-<div class="container">
-
-<header>
-   <h1>Fake News </h1>
-   <img src="http://citiinform.ru/csgoplagin/DM.png" alt="" class="center" width="145" height="156">
-   
-
- 
-
-</header>
-  
-<nav>
-  <ul>
-      <h2>Direct News Links</h2>
-    <li><a href="https://www.cnn.com">CNN</a></li>
-    <li><a href="www.foxnews.com">Fox News</a></li>
-    <li><a href="https://www.nytimes.com">NYT</a></li>
-  </ul>
-</nav>
-
-
-<article>
-  <h3>News or Not</h3>
-
-<p>This application will collect news articles from predefined news sources. The articles will be presented to users for review, rating and comments.</p>
-
-</article>
-
-<table class="c">
-        <tr>
-          <th>News Organization</th>
-          <th>Rating</th>
-          
-        </tr>
-        <tr>
-          <td> CNN     <img src="https://i1.sndcdn.com/avatars-000274882735-21lyyg-t500x500.jpg" class="img-circle" alt="Cinque Terre" width="54" height="48"> </td>
-          <td>4</td>
-          
-        </tr>
-        <tr>
-          <td>Fox News <img src="http://global.fncstatic.com/static/v/all/static-page/apps-products/img/fn-logo.png" class="img-circle" alt="Cinque Terre" width="74" height="54"> </td>
-          <td>1</td>
-         
-        </tr>
-        <tr>
-          <td>New York Times <img src="https://miro.medium.com/fit/c/240/240/1*lDzXmG7cKomswLcrSYVVFQ.png" class ="img-circle" alt="Cinque Terre" width="54" height="54"> </td>
-          <td>5</td>
-          
-        </tr>
-      </table>
-      <br>
-      <br>
-      <!-- Action Submission Form  -->
-      <div class="col-xs-4 col-sm-3 col-md-4 col-lg-4">
-        <form id="gif-form" role="form">
-            <h2><legend><strong>Click Here to Rate Articles</strong></legend></h2>
-            <div class="form-group">
-                <label for="action-input"></label>
-                <input type="text" id="action-input">
-            </div>
-            <input id="addGif" type="submit" value="Add your action" class="btn btn-primary">
-            <input id="removeGif" type="submit" value="Remove last action" class="btn btn-primary">
-        </form>    
-    </div>
-    <!---
-      <div class="container">
-            <h2>Get Articles</h2>
-            <p>Click here to Rate Articles.</p>
-            <button onclick="myFunction()">Rate</button>
-             
-            </div>
-          </div> -->
-        
-      </div>
-      <div class="container">
-            <h2></h2>
-            <p></p>            
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Lastname</th>
-                  <th>Email</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Author</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                </tr>
-                <tr>
-                  <td>Extract</td>
-                      
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-      
-<footer> 2018 Copyright &copy; </footer>
-
-</div>
-
-<script>
-        function myFunction() {
-          document.getElementById("demo").innerHTML = " ";
-        }
-        var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@import "https://unpkg.com/ionicons@4.2.0/dist/css/ionicons.min.css";
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+@media (max-width: 600px) {
+    nav, article {
+        width: 100%;
+        height: auto;
     }
 }
-        </script>
+</style>
+<body>
+    <!--<link rel="stylesheet" href="C:\Users\jyothsna\Desktop\fake-news-deathmatchf\public\assets\reset.css">-->
+    <link rel="stylesheet" href="public\assets\style.css">
+    <header id="masthead">
+        <div class="container">
+            <div class="logo-wrapper">
+                <img src="public\assets\images\FakeNews.jpg" id="brand-logo">
+                <strong>
+                    <a>Fake News Death Match</a>
+                </strong>
+            </div>
+    </header>
+    <section>
+        <nav>
+        </nav>
+        <article>
+            <table id="t01">
+                <tr>
+                    <h1>
+                        <strong>
+                            <th>News Agency</th>
+                        </strong>
+                    </h1>
+                    <strong>
+                        <th>Rating</th>
+                    </strong>
+
+                </tr>
+                <tr>
+                    <td>CNN</td>
+                    <td>3</td>
+
+                </tr>
+                <tr>
+                    <td>FOX</td>
+                    <td>4</td>
+
+                </tr>
+                <tr>
+                    <td>NYT</td>
+                    <td>5</td>
+
+                </tr>
+            </table>
+
+            <br>
+            <div class="rate">
+
+                <button type="button" onclick="alert('News Rating!')">Rating !!!</button>
+            </div>
+
+        </article>
+    </section>
+
+    <section>
+        <nav>
+            <ul>
+                <li>
+                    <img src="public\assets\images\fox_logo (1).jpg" class="auth-image"
+                        alt="FOX">
+                </li>
+                <li>
+                    <img src="public\assets\images\cnn_logo (1).jpg" class="auth-image"
+                        alt="CNN">
+                </li>
+                <li>
+                    <img src="#" class="auth-image" alt="NYT">
+                </li>
+
+            </ul>
+        </nav>
+
+
+        <article>
+            <h1>News from CNN to be pulled in </h1>
+            <div class="rating">
+
+                <input type="radio" name "star" id="star1">
+                <label for="star1"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star2"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star3"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star4"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star5"></label>
+            </div>
+            <h1>News from Fox to be pulled in </h1>
+            <div class="rating">
+
+                <input type="radio" name "star" id="star1">
+                <label for="star1"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star2"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star3"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star4"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star5"></label>
+            </div>
+            <h1>News from NYT to be pulled in </h1>
+            <div class="rating">
+
+                <input type="radio" name "star" id="star1">
+                <label for="star1"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star2"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star3"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star4"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star5"></label>
+            </div>
+            <div class="done">
+
+                <button type="button" onclick="alert('Thank You')">Done</button>
+            </div>
+
+        </article>
+
+
+    </section>
+
+    <footer>
+        <h4 id="copyright">
+            <strong>Fake News Network&copy; Copyright 2018</strong>
+            </p>
+    </footer>
+
 </body>
+
 </html>

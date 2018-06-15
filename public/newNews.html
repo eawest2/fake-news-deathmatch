@@ -10,89 +10,79 @@
     <link href="https://unpkg.com/ionicons@4.2.0/dist/css/ionicons.min.css" rel="stylesheet">
 </head>
 <style>
-    * {
-        box-sizing: border-box;
-    }
+     * {
+    box-sizing: border-box;
+}
 
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-    }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-    /* Style the header */
+/* Style the header */
+header {
+    background-color: black;
+    padding: 30px;
+    text-align: center;
+    font-size: 55px;
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-    header {
-        background-color: black;
-        padding: 30px;
-        text-align: center;
-        font-size: 55px;
-        color: red;
-        font-family: Arial, Helvetica, sans-serif;
-    }
+/* Create two columns/boxes that floats next to each other */
+nav {
+    float: left;
+    width: 15%;
+    height: 250px; /* only for demonstration, should be removed */
+    background:  white;
+    padding: 20px;
+}
 
-    /* Create two columns/boxes that floats next to each other */
+/* Style the list inside the menu */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
 
-    nav {
-        float: left;
-        width: 15%;
-        height: 250px;
-        /* only for demonstration, should be removed */
-        background: white;
-        padding: 20px;
-    }
+li{
+  margin: 30px 0;
+}
 
-    /* Style the list inside the menu */
+h1{
+  margin: 15px 0;
+}
 
-    nav ul {
-        list-style-type: none;
-        padding: 0;
-    }
+table, th, td {
+    border: 3px solid black;
+    border-collapse: collapse;
+    margin-bottom: 4px;
+    width: 50%;
+   
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+}
 
-    li {
-        margin: 30px 0;
-    }
+th {
+    border: 5px solid black;
+}
 
-    h1 {
-        margin: 15px 0;
-    }
+article {
+    float: left;
+    padding: 20px;
+    width: 85%;
+    background-color: #f1f1f1;
+    height: 300px; /* only for demonstration, should be removed */
+}
 
-    table,
-    th,
-    td {
-        border: 3px solid black;
-        border-collapse: collapse;
-        margin-bottom: 4px;
-        width: 50%;
+/* Clear floats after the columns */
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 
-    }
-
-    th,
-    td {
-        padding: 15px;
-        text-align: left;
-    }
-
-    th {
-        border: 5px solid black;
-    }
-
-    article {
-        float: left;
-        padding: 20px;
-        width: 85%;
-        background-color: #f1f1f1;
-        height: 300px;
-        /* only for demonstration, should be removed */
-    }
-
-    /* Clear floats after the columns */
-
-    section:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-
-    /* .rating
+/* .rating
 {
   position: absolute;
   top: 50%;
@@ -102,7 +92,7 @@
 
 } */
 
-    /* .rating label{
+/* .rating label{
 
     display: block;
     cursor: pointer;
@@ -110,7 +100,7 @@
     background: #ccc;
 } */
 
-    /* .rating label:before
+/* .rating label:before
 {
     content: '\f005' ;
     font-family: fontAwesome;
@@ -134,33 +124,30 @@
     text-shadow: 0 2 px;
 } */
 
-    .rating label {
-        content: '\f005';
-        font-family: fontAwesome;
+.rating label
+{
+    content: '\f005' ;
+    font-family: fontAwesome;
+}
+
+/* Style the footer */
+footer {
+    background-color: black;
+    padding: 10px;
+    text-align: center;
+    color: red;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@import "https://unpkg.com/ionicons@4.2.0/dist/css/ionicons.min.css";
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+@media (max-width: 600px) {
+    nav, article {
+        width: 100%;
+        height: auto;
     }
-
-    /* Style the footer */
-
-    footer {
-        background-color: black;
-        padding: 10px;
-        text-align: center;
-        color: red;
-    }
-
-    /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
-
-    @import "https://unpkg.com/ionicons@4.2.0/dist/css/ionicons.min.css";
-    @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
-    @media (max-width: 600px) {
-        nav,
-        article {
-            width: 100%;
-            height: auto;
-        }
-    }
+}
 </style>
-
 <body>
     <!--<link rel="stylesheet" href="C:\Users\jyothsna\Desktop\fake-news-deathmatchf\public\assets\reset.css">-->
     <link rel="stylesheet" href="public\assets\style.css">
@@ -219,10 +206,12 @@
         <nav>
             <ul>
                 <li>
-                    <img src="public\assets\images\fox_logo (1).jpg" class="auth-image" alt="FOX">
+                    <img src="public\assets\images\fox_logo (1).jpg" class="auth-image"
+                        alt="FOX">
                 </li>
                 <li>
-                    <img src="public\assets\images\cnn_logo (1).jpg" class="auth-image" alt="CNN">
+                    <img src="public\assets\images\cnn_logo (1).jpg" class="auth-image"
+                        alt="CNN">
                 </li>
                 <li>
                     <img src="#" class="auth-image" alt="NYT">

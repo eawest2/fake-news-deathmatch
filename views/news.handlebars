@@ -1,140 +1,136 @@
-<nav>
-
-        <nav class="blue darken-4" role="navigation">
-            <div class="nav-wrapper container">
-                <img src="./assets/images/FakeNews.jpg" class="center"
-                    alt="logo" height="60" width="80">
-                <a id="logo-container" href="#" class="brand-logo center red-text"><b>Fake News Death Match</b> </a>
-                <!-- <a href="#" class="brand-logo">Logo</a>-->
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-
-                    <li>
-                        <a href="collapsible.html">Login</a>
-                    </li>
-                </ul>
+<body>
+   
+    <link rel="stylesheet" href="public/assets/style.css">
+    <header id="masthead">
+        <div class="container">
+            <div class="logo-wrapper">
+                <img src="../assets/images/FakeNews.jpg" id="brand-logo">
+                <!--../assets/css/style.css-->
+                <strong>
+                    <a>Fake News Death Match</a>
+                </strong>
             </div>
+    </header>
+    <section>
+        <nav>
+        </nav>
+        <article>
+            <table id="t01">
+                <tr>
+                    <h1>
+                        <strong>
+                            <th>News Agency</th>
+                        </strong>
+                    </h1>
+                    <strong>
+                        <th>Rating</th>
+                    </strong>
+
+                </tr>
+                <tr>
+                    <td>CNN</td>
+                    <td>3</td>
+
+                </tr>
+                <tr>
+                    <td>FOX</td>
+                    <td>4</td>
+
+                </tr>
+                <tr>
+                    <td>NYT</td>
+                    <td>5</td>
+
+                </tr>
+            </table>
+
+            <br>
+            <div class="rate">
+
+                <button type="button" onclick="alert('News Rating!')">Rating !!!</button>
+            </div>
+
+        </article>
+    </section>
+
+    <section>
+        <nav>
+            <ul>
+                <li>
+                    <img src="../assets/images/fox_logo (1).jpg" class="auth-image" alt="FOX">
+                </li>
+                <li>
+                    <img src="../assets/images/cnn_logo (1).jpg" class="auth-image" alt="CNN">
+                </li>
+                <li>
+                    <img src="#" class="auth-image" alt="NYT">
+                </li>
+
+            </ul>
         </nav>
 
 
+        <article>
+            <h1>News from CNN to be pulled in </h1>
+            <div class="rating">
 
-        <div class="row center">
-            <h5 class="header col s12 light"></h5>
-        </div>
-        <div class="row center">
+                <input type="radio" name "star" id="star1">
+                <label for="star1"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star2"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star3"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star4"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star5"></label>
+            </div>
+            <h1>News from Fox to be pulled in </h1>
+            <div class="rating">
 
-            <!-- <button id="searchBtn" div class="col l4 m12 offset-l4 btn-large waves-effect waves-light orange" type="submit">Login</button>
+                <input type="radio" name "star" id="star1">
+                <label for="star1"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star2"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star3"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star4"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star5"></label>
+            </div>
+            <h1>News from NYT to be pulled in </h1>
+            <div class="rating">
 
-                <input id="articleSearch" div class="col l4 offset-l4" placeholder="User Name" type="text"> -->
-            </form>
-        </div>
-        </div>
-    </nav>
-    <br>
-    <br>
+                <input type="radio" name "star" id="star1">
+                <label for="star1"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star2"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star3"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star4"></label>
+                <input type="radio" name "star" id="star1">
+                <label for="star5"></label>
+            </div>
+            <div class="done">
 
-    <div class="row center">
+                <button type="button" onclick="alert('Thank You')">Done</button>
+            </div>
 
-    </div>
-
-    <div class="container">
-        <div class="card-panel blue darken-4 section">
-
-            <!--   Icon Section   -->
-            <div class="row">
-                <div class="col s4 m3">
-                    <div class="icon-block">
-                        <h2 class=" center">
-                            <!-- <i class="large material-icons">cake</i> -->
-                        </h2>
-                        <!-- <h5 class="center">CNN</h5>-->
-                        <h5>
-                                <span class="white-text text">CNN </span>
-                        </h5>
-                        <img src="./assets/images/cnn_logo (1).jpg"  class="auth-image" alt="Your Name">
-
-                        <p class="light"></p>
-                    </div>
-                </div>
-
-                <div class="col s4 m3">
-                    <div class="icon-block">
-                        <h2 class="center orange-text">
-                            <!--<i class="large material-icons">group</i> -->
-                        </h2>
-                        <!-- <h5 class="center">XYZ</h5>-->
-                        <h5>
-                                <span class="white-text text">Fox News </span>
-                        </h5>
-                        <img src="./assets/images/fox_logo (1).jpg" class="auth-image" alt="Your Name">
-                        <p class="light"></p>
-                    </div>
-                </div>
-
-                <div class="col s4 m3">
-                    <div class="icon-block">
-                        <h2 class="center teal lighten-2">
-                            <!--<i class="large material-icons">cloud</i>
-                        </h2>-->
-                            <!--<h5 class="center">ABC</h5>-->
-                            <h5>
-                                    <span class="white-text text">New York Times </span>
-                            </h5>
-                            <img src="./assets/images/nyt_logo.jpg" class="auth-image" alt="Your Name">
-                            <p class="light"> </p>
-                    </div>
-                </div>
+        </article>
 
 
-                <table class="responsive-table white-text" >
-                        <thead>
-                            <br>
-                            <br>
+    </section>
 
-                          <tr>
-                              <th>News Organization</th>
-                              <th>Rating</th>
-                          </tr>
-                        </thead>
-                
-                        <tbody>
-                          <tr>
-                            <td>CNN</td>
-                            <td>5</td>
-                            
-                          </tr>
-                          <tr>
-                            <td>Fox News</td>
-                            <td>4</td>
-                        
-                          </tr>
-                          <tr>
-                            <td>New York Times</td>
-                            <td>3</td>
-                           
-                          </tr>
-                        </tbody>
-                      </table>
-                            
+    <footer>
+        <h4 id="copyright">
+            <strong>Fake News Network&copy; Copyright 2018</strong>
+            </p>
+    </footer>
 
-                <div class="section no-pad-bot" id="index-banner">
-                    <div class="container">
-                {{#each article}}
-                {{> article}}
-                {{/each}}
-                    </div>
- 
-                </div>
-                                <div class="footer-copyright">
-                                  <div class="container">
-                                  © 2018 Copyright 
-                                  <a class="grey-text text-lighten-4 right" href="#!"></a>
-                                  </div>
-                                </div>
-                              </footer>
-                                  
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-                        <!--  Scripts-->
-                        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-                        
 
-                    </script>
+    </script>

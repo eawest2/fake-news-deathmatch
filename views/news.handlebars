@@ -1,5 +1,5 @@
 <body>
-   
+    
     <link rel="stylesheet" href="public/assets/style.css">
     <header id="masthead">
         <div class="container">
@@ -68,57 +68,14 @@
 
             </ul>
         </nav>
+                <div class="section no-pad-bot" id="index-banner">
+                    <div class="container">
 
-
-        <article>
-            <h1>News from CNN to be pulled in </h1>
-            <div class="rating">
-
-                <input type="radio" name "star" id="star1">
-                <label for="star1"></label>
-                <input type="radio" name "star" id="star1">
-                <label for="star2"></label>
-                <input type="radio" name "star" id="star1">
-                <label for="star3"></label>
-                <input type="radio" name "star" id="star1">
-                <label for="star4"></label>
-                <input type="radio" name "star" id="star1">
-                <label for="star5"></label>
-            </div>
-            <h1>News from Fox to be pulled in </h1>
-            <div class="rating">
-
-                <input type="radio" name "star" id="star1">
-                <label for="star1"></label>
-                <input type="radio" name "star" id="star1">
-                <label for="star2"></label>
-                <input type="radio" name "star" id="star1">
-                <label for="star3"></label>
-                <input type="radio" name "star" id="star1">
-                <label for="star4"></label>
-                <input type="radio" name "star" id="star1">
-                <label for="star5"></label>
-            </div>
-            <h1>News from NYT to be pulled in </h1>
-            <div class="rating">
-
-                <input type="radio" name "star" id="star1">
-                <label for="star1"></label>
-                <input type="radio" name "star" id="star1">
-                <label for="star2"></label>
-                <input type="radio" name "star" id="star1">
-                <label for="star3"></label>
-                <input type="radio" name "star" id="star1">
-                <label for="star4"></label>
-                <input type="radio" name "star" id="star1">
-                <label for="star5"></label>
-            </div>
-            <div class="done">
-
-                <button type="button" onclick="alert('Thank You')">Done</button>
-            </div>
-
-        </article>
+                {{#each article}}
+                {{> articleReview}}
+                {{/each}}
+                    </div>
+                </div>
 
 
     </section>

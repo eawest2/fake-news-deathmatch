@@ -158,3 +158,8 @@ footer {
         height: 10px;
     }
 }
+
+.auth-image {
+    height: 50px;
+    width: 50px;
+}

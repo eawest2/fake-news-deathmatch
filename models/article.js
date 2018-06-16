@@ -12,7 +12,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     imageURL: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
         isURL: {
           args: true,

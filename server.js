@@ -42,15 +42,15 @@ app.use(express.static(__dirname + '/public'));
 
 
 //Start our server so that it can begin listening to client requests.
-app.listen(PORT, function() {
-    console.log("Server listening on: http://localhost:" + PORT);
-});
+// app.listen(PORT, function() {
+//     console.log("Server listening on: http://localhost:" + PORT);
+// });
 
-// db.sequelize.sync({
-//         force: true
-//     })
-//     .then(function () {
-//         app.listen(PORT, function () {
-//             console.log("Server listening on: http://localhost:" + PORT);
-//         });
-//     });
+db.sequelize.sync({
+        force: true
+    })
+    .then(function () {
+        app.listen(PORT, function () {
+            console.log("Server listening on: http://localhost:" + PORT);
+        });
+    });

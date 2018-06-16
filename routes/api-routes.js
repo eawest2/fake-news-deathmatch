@@ -89,12 +89,10 @@ module.exports = function (app) {
         db.Article.findAll({})
             .then(articles => {
                 var len = articles.length;
-                console.log(articles.length);
                 for (let i = 0; i < 3; i++) {
                     var rando = Math.floor(Math.random() * len)
                     ranArt.push(articles[rando].dataValues);
                 }
-                console.log(ranArt);
                 res.json(ranArt);
             });
     });
@@ -124,7 +122,6 @@ module.exports = function (app) {
                 for (var i = 0; i < average.length; i++) {
                     if (isNaN(average[i].dataValues.ArticleReviews.length) === false){
                         var reviewValue = average[i].dataValues.ArticleReviews.length;
-                        console.log(reviewValue);
                     }
                     else{
                         var reviewValue  = "nan"
@@ -153,8 +150,7 @@ module.exports = function (app) {
                     CNN: cnnScore,
                     FOX: foxScore,
                     NYT: nytSCore
-                }
-                console.log(finalObj);
+                };
                 res.json(finalObj);
             })
     });

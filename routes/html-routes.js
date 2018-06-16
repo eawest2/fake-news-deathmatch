@@ -15,10 +15,10 @@ module.exports = function(app){
 		var jumbotronObj;
 		var articlesObj;
 
-		fetch("/api/article/review"). then(articles => {
+		fetch("http://localhost:8080/api/article/review"). then(articles => {
 			articlesObj = articles;
 		});
-		fetch("/api/jumbo"). then(jumbotron => {
+		fetch("http://localhost:8080/api/jumbo"). then(jumbotron => {
 			jumbotronObj = jumbotron;
 		});
 		res.render('news', articlesObj);

@@ -67,10 +67,10 @@ module.exports = function (app) {
     // Add review to article
     app.put("/api/article/:id/", function (req, res) {
         db.Review.create({
-            rating1: '',
-            rating2: '',
-            rating3: '',
-            comment: ''
+            rating1: req.params.rating1,
+            rating2: req.params.rating2,
+            rating3: req.params.rating3,
+            comment: req.params.comment
         }).then(review => {
             db.Article.findOne({
                 where: {
@@ -120,33 +120,42 @@ module.exports = function (app) {
             }
         })
             .then(average => {
-                //console.log(average)
                 var sourceArr = [];
                 for (var i = 0; i < average.length; i++) {
-                    //console.log(average[i].dataValues.ArticleReviews.length);
-                    var reviewValue = average[i].dataValues.ArticleReviews.length;
+                    if (isNaN(average[i].dataValues.ArticleReviews.length) === false){
+                        var reviewValue = average[i].dataValues.ArticleReviews.length;
+                        console.log(reviewValue);
+                    }
+                    else{
+                        var reviewValue  = "nan"
+                        console.log("Fail");
+                    }
                     var reviewArr = [];
-                    for (a = 0; a < reviewValue; a++) {
-                        let rating = average[i].dataValues.ArticleReviews[a].dataValues
-                        var value = (Math.floor(10 * (rating.rating1 + rating.rating2 + rating.rating3) / 3)) / 10
-                        reviewArr.push(value);
-                        //console.log(value);
-                    };
-                    //console.log(reviewArr);
-                    var finalScore = (Math.floor(10 * ((reviewArr.reduce(getSum)) / reviewArr.length)) / 10);
-                    sourceArr.push(finalScore);
-                    //console.log(finalScore);
+                    if (reviewValue !== "nan")
+                        for (a = 0; a < reviewValue; a++) {
+                            let rating = average[i].dataValues.ArticleReviews[a].dataValues
+                            var value = (Math.floor(10 * (rating.rating1 + rating.rating2 + rating.rating3) / 3)) / 10
+                            reviewArr.push(value);
+                        }
+                    var finalScore = (Math.floor(10 * ((reviewArr.reduce(function(acc, val) { return acc + val; }, 0)) / reviewArr.length)) / 10);
+                    if (finalScore > 0){sourceArr.push(finalScore)};
                 };
                 final.push(sourceArr);
                 final = [].concat.apply([], final)
-                console.log('>>>>> final: ', final);
-                res.send(final);
+                //console.log('>>>>> final: ', final);
+                var cnnScore = "Error";
+                var foxScore = "Error";
+                var nytSCore = "Error";
+                if (isNaN(final[0]) === false){cnnScore = final[0]}
+                if (isNaN(final[1]) === false){foxScore = final[1]}
+                if (isNaN(final[2]) === false){nytScore = final[2]}
+                finalObj = {
+                    CNN: cnnScore,
+                    FOX: foxScore,
+                    NYT: nytSCore
+                }
+                console.log(finalObj);
+                res.json(finalObj);
             })
-
     });
-
-    function getSum(total, num) {
-        return total + num;
-    }
 };
-
